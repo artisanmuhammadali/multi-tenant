@@ -1,5 +1,5 @@
 import { getStores } from '@/stores'
-import { canAccess } from '@/assets/utils'
+import { canAccess, getAuthToken } from '@/assets/utils'
 /**
  * This middleware is used to dynamically update the Layouts system.
  *
@@ -10,7 +10,7 @@ import { canAccess } from '@/assets/utils'
 export async function authMiddleware(to, from, next) {
   const { authStore } = getStores()
   // Fetch user only once if not already fetched
-  if (!authStore.user) {
+  if (!authStore.user && getAuthToken()) {
     await authStore.fetchUser()
   }
   // if user is auth and try ot access guest routes then redirect to dashboard

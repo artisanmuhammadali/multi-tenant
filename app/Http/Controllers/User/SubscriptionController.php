@@ -5,12 +5,23 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use App\Models\Setting;
+use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class SubscriptionController extends Controller
 {
+    /**
+     * Display a listing of the tenents.
+     */
+    public function index(Request $request)
+    {
+        $user = $request->user();
+        $sub = Subscription::where('tenant_id',$user->id)->where('active' , true)->first();
+        $plan = Plan::find($sub->plan_id);
+        return response()->json(['subscription' => $sub , 'plan' => $plan]);
+    }
     public function planSave(Request $request)
     {
         $plan=Plan::find($request->plan_id);

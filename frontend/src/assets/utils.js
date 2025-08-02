@@ -34,6 +34,10 @@ export const permissions = [
   {
     id: 'reports',
     role: ['super-admin'],
+  },
+  {
+    id: 'subscription',
+    role: ['tenant'],
   }
 ]
 export function formatDate(date, formatString) {
@@ -46,6 +50,12 @@ export function formatDate(date, formatString) {
     console.error('Invalid date or format:', error)
     return ''
   }
+}
+export function getDayDiff(targetDate) {
+  const today = dayjs().startOf('day');
+  const target = dayjs(targetDate).startOf('day');
+
+  return target.diff(today, 'day'); // positive, 0, or negative
 }
 export function formatUTC(date) {
   if (!date) return null

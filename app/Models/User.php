@@ -55,4 +55,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserAddress::class);
     }
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class , 'tenant_id')->where('active' , true);
+    }
 }

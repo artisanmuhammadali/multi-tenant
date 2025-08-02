@@ -12,4 +12,10 @@ class Subscription extends Model
         'subscription_ends',
         'active',
     ];
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
 }

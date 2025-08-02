@@ -3,22 +3,24 @@ import axios from 'axios'
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import { ref } from 'vue'
 
-export const useAppStore = defineStore('app', {
+export const useSubscriptionStore = defineStore('subscription', {
   state: () => {
     return {
-      setting: ref({}),
-      dashboardStats: ref({}),
+      data: ref([]),
+      subscription: ref({}),
+      plan: ref({}),
       errors:ref({}),
     }
   },
 
   actions: {
-    async fetchDashboardStats() {
+    async fetchPlans() {
       startLoader()
       await axios
-        .get(`dashboard-stats`)
+        .get(`subscription`)
         .then(async (response) => {
-          this.dashboardStats = response.data.data
+          this.subscription = response.data.subscription
+          this.plan = response.data.plan
           endLoader()
         })
         .catch((error) => {
@@ -26,20 +28,7 @@ export const useAppStore = defineStore('app', {
           toastrMsg(error?.response?.data?.message ?? 'Server Error', 'error')
         })
     },
-    async fetchSetting() {
-      startLoader()
-      await axios
-        .get(`setting`)
-        .then(async (response) => {
-          this.setting = response.data.data
-          endLoader()
-        })
-        .catch((error) => {
-          endLoader()
-          toastrMsg(error?.response?.data?.message ?? 'Server Error', 'error')
-        })
-    },
-    async saveSetting() {
+    async savePlan() {
         disableSubmitBtn()
         startLoader()
         await axios
@@ -54,11 +43,12 @@ export const useAppStore = defineStore('app', {
             enableSubmitBtn()
             endLoader()
           })
+
     },
   },
 })
 
 // Hot Module Replacement (only for development)
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useAppStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useSubscriptionStore, import.meta.hot))
 }

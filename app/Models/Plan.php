@@ -18,7 +18,7 @@ class Plan extends Model
         'expire_after'
     ];
 
-    protected $appends = ['price_after_discount'];
+    protected $appends = ['price_after_discount' , 'active'];
 
     protected function discount(): Attribute
     {
@@ -30,6 +30,13 @@ class Plan extends Model
     {
         return Attribute::make(
             get: fn () => round($this->price - ($this->price * ($this->discount ?? 0) / 100), 2),
+        );
+    }
+    protected function active(): Attribute
+    {
+        $plan_id = auth()->user()->subscription ? auth()->user()->subscription->plan_id : 0;
+        return Attribute::make(
+            get: fn () => $this->id == $plan_id,
         );
     }
 }

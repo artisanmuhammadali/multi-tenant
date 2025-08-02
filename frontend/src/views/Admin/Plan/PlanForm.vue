@@ -34,7 +34,7 @@
                             <div class="col-12 col-sm-4 mb-3">
                               <div class="form-group">
                                 <label class="form-label">Price <span class="text-danger">*</span></label>
-                                <input class="form-control" type="number" min="1" v-model="planStore.plan.price" required>
+                                <input class="form-control" type="number" min="0" v-model="planStore.plan.price" required>
 
                               </div>
                               <span v-if="planStore.errors.price" class="text-danger text-xs">{{
@@ -53,7 +53,7 @@
                             <div class="col-12 col-sm-4 mb-3">
                               <div class="form-group">
                                 <label class="form-label">Discount %</label>
-                                <input class="form-control" type="number" min="1" max="100" v-model="planStore.plan.discount">
+                                <input class="form-control" type="number" min="0" max="100" v-model="planStore.plan.discount">
                               </div>
                               <span v-if="planStore.errors.discount" class="text-danger text-xs">{{
                                   planStore.errors.discount

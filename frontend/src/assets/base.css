@@ -62,7 +62,7 @@ button:disabled:hover {
     border: 1px solid #d2d6da !important;
     padding: 0.5rem 0.5rem !important;
 }
-.router-link-active{
+.sidebar .router-link-active{
     background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
     color: #fff !important;
 }
@@ -147,4 +147,7 @@ button:disabled:hover {
   }
   100% {
   }
+}
+.planDescription li{
+  padding-bottom:10px;
 }

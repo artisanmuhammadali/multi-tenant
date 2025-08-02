@@ -105,7 +105,7 @@ export const usePlanStore = defineStore('plan', {
     // Helper Functions
     validation() {
       this.errors = {}
-      const validate = !!this.plan.name && !!this.plan.description && !!this.plan.price
+      const validate = !!this.plan.name && !!this.plan.description
       if (!validate) {
         if (!this.plan.name) this.errors.name = 'Name is required.'
         if (!this.plan.description) this.errors.description = 'Description is required.'

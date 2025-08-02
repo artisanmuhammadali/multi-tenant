@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TenantController;
+use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\User\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/user', function (Request $request) {
         return response()->json(['user'=>$request->user()]);
     });
+    Route::get('/dashboard-stats', [DashboardController::class, 'index'])->name('dashboard.stats');
+
     Route::group(['prefix' => 'tenant' , 'as' => 'tenant.'], function () {
         Route::get('/', [TenantController::class, 'index'])->name('index');
         Route::post('/store', [TenantController::class, 'store'])->name('store');
@@ -28,6 +31,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::group(['prefix' => 'setting' , 'as' => 'setting.'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('index');
         Route::post('/store', [SettingController::class, 'store'])->name('store');
+    });
+    Route::group(['prefix' => 'subscription' , 'as' => 'subscription.'], function () {
+        Route::get('/', [SubscriptionController::class, 'index'])->name('index');
+        Route::post('/update', [SubscriptionController::class, 'update'])->name('update');
     });
     Route::group(['prefix' => 'payment' , 'as' => 'payment.'], function () {
         Route::get('/plans-purchase/{id?}', [SubscriptionController::class , 'planBuy'])->name('plan.buy');

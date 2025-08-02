@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import dashboardRoutes from './dashboardRoutes.js'
 import { authMiddleware } from './middlewares/authMiddleware.js'
 import ForbiddenView from '@/views/Exception/ForbiddenView.vue'
@@ -7,6 +8,7 @@ import NotFoundView from '@/views/Exception/NotFoundView.vue'
 import tenantRoutes from './tenantRoutes.js'
 import planRoutes from './planRoutes.js'
 import SettingsView from '@/views/Admin/SettingsView.vue'
+import SubscriptionView from '@/views/Tenant/SubscriptionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
@@ -23,11 +25,17 @@ const router = createRouter({
       component: ForbiddenView,
       meta: { title: 'Forbidden Access', layout: 'GuestLayout', exception: true },
     },
-     {
+    {
       path: '/settings',
       name: 'settings',
       component: SettingsView,
       meta: { title: 'App Settings', layout: 'UserLayout', permission: 'settings' },
+    },
+    {
+      path: '/subscription',
+      name: 'subscription',
+      component: SubscriptionView,
+      meta: { title: 'Subscription Plans', layout: 'UserLayout', permission: 'subscription' },
     },
     ...dashboardRoutes,
     ...tenantRoutes,
