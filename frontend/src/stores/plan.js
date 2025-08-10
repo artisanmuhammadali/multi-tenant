@@ -10,7 +10,10 @@ export const usePlanStore = defineStore('plan', {
       data: ref([]),
       dataCount: ref(0),
       page: 1,
-      plan: ref({}),
+      plan: ref({
+        advance_report:1,
+        offline_sync:1,
+      }),
       errors: ref({}),
       currentPage: ref(1),
       totalPages: ref(0),
@@ -23,7 +26,7 @@ export const usePlanStore = defineStore('plan', {
     async fetchAllPlans(param) {
       startLoader()
       await axios
-        .get(`plan${param}`)
+        .get(`admin/plan${param}`)
         .then(async (response) => {
           this.data = response.data.data
           this.totalPages = response.data.meta.last_page
@@ -38,7 +41,7 @@ export const usePlanStore = defineStore('plan', {
     async fetchPlanDetail(id) {
       startLoader()
       await axios
-        .get('plan/detail/' + id)
+        .get('admin/plan/detail/' + id)
         .then(async (response) => {
           this.plan = response.data.data
           endLoader()
@@ -49,49 +52,47 @@ export const usePlanStore = defineStore('plan', {
         })
     },
     async createPlan() {
-      if (this.validation()) {
         disableSubmitBtn()
         startLoader()
         await axios
-          .post('plan/store', this.plan)
+          .post('admin/plan/store', this.plan)
           .then(async (response) => {
             enableSubmitBtn()
             endLoader()
             toastrMsg('Plan Created Successfully.', 'success')
             await nextTick()
-            router.push('/plan')
+            router.push('/admin/plan')
           })
           .catch((error) => {
             handelException(error)
             enableSubmitBtn()
             endLoader()
           })
-      }
+      
     },
     async updatePlan() {
-      if (this.validation()) {
         disableSubmitBtn()
         startLoader()
         await axios
-          .put(`plan/edit/${this.plan.id}`, this.plan)
+          .put(`admin/plan/edit/${this.plan.id}`, this.plan)
           .then(async (response) => {
             enableSubmitBtn()
             endLoader()
             toastrMsg('Plan Updated Succesfully.', 'success')
             await nextTick()
-            router.push('/plan')
+            router.push('/admin/plan')
           })
           .catch((error) => {
             handelException(error)
             enableSubmitBtn()
             endLoader()
           })
-      }
+      
     },
     async deletePlan(id) {
       startLoader()
       await axios
-        .delete(`plan/delete/${id}`)
+        .delete(`admin/plan/delete/${id}`)
         .then(async (response) => {
           toastrMsg('Plan Deleted Successfully.', 'success')
           await this.fetchAllPlans('?page=1')
@@ -103,18 +104,6 @@ export const usePlanStore = defineStore('plan', {
         })
     },
     // Helper Functions
-    validation() {
-      this.errors = {}
-      const validate = !!this.plan.name && !!this.plan.description
-      if (!validate) {
-        if (!this.plan.name) this.errors.name = 'Name is required.'
-        if (!this.plan.description) this.errors.description = 'Description is required.'
-        if (!this.plan.price) this.errors.price = 'Price is required.'
-        return false
-      } else {
-        return true
-      }
-    },
     async pagination(page) {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page

@@ -13,7 +13,7 @@
                 <div class="row mt-3">
                     <div class="col-12 col-sm-12 mb-3">
                       <div class="form-group">
-                        <label class="form-label">Stripe Key <span class="text-danger">*</span></label>
+                        <label class="form-label">Stripe Publish Key <span class="text-danger">*</span></label>
                         <input class="form-control" v-model="appStore.setting.stripe_key" type="text" required>
 
                       </div>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-12 col-sm-12 mb-3">
                       <div class="form-group">
-                        <label class="form-label">Stripe Secret <span class="text-danger">*</span></label>
+                        <label class="form-label">Stripe Secret Key<span class="text-danger">*</span></label>
                         <input class="form-control" type="text" v-model="appStore.setting.stripe_secret" required>
 
                       </div>

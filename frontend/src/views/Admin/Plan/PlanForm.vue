@@ -59,7 +59,58 @@
                                   planStore.errors.discount
                                 }}</span>
                             </div>
-                            <div class="col-12 col-sm-12 mb-3">
+                            <div class="col-12 col-sm-2 flex-fill mb-3">
+                              <div class="form-group">
+                                <label class="form-label">Users Limit <span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" min="1" v-model="planStore.plan.user_limit">
+                              </div>
+                              <span v-if="planStore.errors.user_limit" class="text-danger text-xs">{{
+                                  planStore.errors.user_limit
+                                }}</span>
+                            </div>
+                            <div class="col-12 col-sm-2 flex-fill mb-3">
+                              <div class="form-group">
+                                <label class="form-label">Device Limit <span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" min="1"  v-model="planStore.plan.device_limit">
+                              </div>
+                              <span v-if="planStore.errors.device_limit" class="text-danger text-xs">{{
+                                  planStore.errors.device_limit
+                                }}</span>
+                            </div>
+                            <div class="col-12 col-sm-2 flex-fill mb-3">
+                              <div class="form-group">
+                                <label class="form-label">Api Limit <span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" min="1" v-model="planStore.plan.api_limit">
+                              </div>
+                              <span v-if="planStore.errors.api_limit" class="text-danger text-xs">{{
+                                  planStore.errors.api_limit
+                                }}</span>
+                            </div>
+                            <div class="col-12 col-sm-2 flex-fill mb-3">
+                              <div class="form-group">
+                                <label class="form-label">Offline Sync<span class="text-danger">*</span></label>
+                                <select v-model="planStore.plan.offline_sync" class="form-control">
+                                  <option value="1">Active</option>
+                                  <option value="0">InActive</option>
+                                </select>
+                              </div>
+                              <span v-if="planStore.errors.offline_sync" class="text-danger text-xs">{{
+                                  planStore.errors.offline_sync
+                                }}</span>
+                            </div>
+                            <div class="col-12 col-sm-2 flex-fill mb-3">
+                              <div class="form-group">
+                                <label class="form-label">Advance Report<span class="text-danger">*</span></label>
+                                <select v-model="planStore.plan.advance_report" class="form-control">
+                                  <option value="1">Active</option>
+                                  <option value="0">InActive</option>
+                                </select>
+                              </div>
+                              <span v-if="planStore.errors.advance_report" class="text-danger text-xs">{{
+                                  planStore.errors.advance_report
+                                }}</span>
+                            </div>
+                            <div class="col-12 col-sm-12 mb-3 d-none">
                               <label class="form-label">Description <span class="text-danger">*</span></label>
                               <froala
                                 id="edit"

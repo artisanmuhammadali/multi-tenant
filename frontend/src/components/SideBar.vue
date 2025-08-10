@@ -12,8 +12,10 @@
       <ul class="navbar-nav sidebar">
           <li class="nav-item " v-for="nav in sidebar">
             <ProtectedRoute  :route-name="nav.link" :permission="nav.permission"
-              class="nav-link  "
-              :class="$route.name === nav.link ? 'active bg-gradient-dark text-white': 'text-dark' "
+              class="nav-link"
+              :class="new RegExp(`^${nav.matchedRoute.replace('*', '.*')}$`).test($route.name) 
+                    ? 'active bg-gradient-dark text-white' 
+                    : 'text-dark'"
               >
               <i class="material-symbols-rounded opacity-5">{{nav.icon}}</i>
               <span class="nav-link-text ms-1">{{ nav.name }}</span>
@@ -31,7 +33,7 @@
 <script setup>
 import { getStores } from '@/stores';
 import ProtectedRoute from './ProtectedRoute.vue'
-const { authStore} = getStores()
+const { authStore } = getStores()
 let sidebar = [
   {
     name: 'Dashboard',
@@ -43,14 +45,14 @@ let sidebar = [
   {
     name: 'Tenants',
     link: 'tenant.index',
-    matchedRoute: 'tenant.index',
+    matchedRoute: 'tenant.*',
     icon: 'groups',
     permission: 'tenant',
   },
   {
     name: 'Plans',
     link: 'plan.index',
-    matchedRoute: 'plan.index',
+    matchedRoute: 'plan.*',
     icon: 'assignment',
     permission: 'plan',
   },
@@ -60,6 +62,13 @@ let sidebar = [
     matchedRoute: 'settings',
     icon: 'settings',
     permission: 'settings',
+  },
+  {
+    name: 'Customer',
+    link: 'customer.index',
+    matchedRoute: 'customer.*',
+    icon: 'groups',
+    permission: 'customer',
   },
   {
     name: 'Subscription',

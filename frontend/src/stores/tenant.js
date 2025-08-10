@@ -25,7 +25,7 @@ export const useTenantStore = defineStore('tenant', {
     async fetchAllTenants(param) {
       startLoader()
       await axios
-        .get(`tenant${param}`)
+        .get(`admin/tenant${param}`)
         .then(async (response) => {
           this.data = response.data.data
           this.totalPages = response.data.meta.last_page
@@ -40,7 +40,7 @@ export const useTenantStore = defineStore('tenant', {
     async fetchTenantDetail(id) {
       startLoader()
       await axios
-        .get('tenant/detail/' + id)
+        .get('admin/tenant/detail/' + id)
         .then(async (response) => {
           this.tenant = response.data.data
           endLoader()
@@ -55,13 +55,13 @@ export const useTenantStore = defineStore('tenant', {
         disableSubmitBtn()
         startLoader()
         await axios
-          .post('tenant/store', this.tenant)
+          .post('admin/tenant/store', this.tenant)
           .then(async (response) => {
             enableSubmitBtn()
             endLoader()
             toastrMsg('Tenant Created Successfully.', 'success')
             await nextTick()
-            router.push('/tenant')
+            router.push('/admin/tenant')
           })
           .catch((error) => {
             handelException(error)
@@ -75,13 +75,13 @@ export const useTenantStore = defineStore('tenant', {
         disableSubmitBtn()
         startLoader()
         await axios
-          .put(`tenant/edit/${this.tenant.user_id}`, this.tenant)
+          .put(`admin/tenant/edit/${this.tenant.user_id}`, this.tenant)
           .then(async (response) => {
             enableSubmitBtn()
             endLoader()
             toastrMsg('Tenant Updated Succesfully.', 'success')
             await nextTick()
-            router.push('/tenant')
+            router.push('/admin/tenant')
           })
           .catch((error) => {
             handelException(error)
@@ -93,7 +93,7 @@ export const useTenantStore = defineStore('tenant', {
     async deleteTenant(id) {
       startLoader()
       await axios
-        .delete(`tenant/delete/${id}`)
+        .delete(`admin/tenant/delete/${id}`)
         .then(async (response) => {
           toastrMsg('Tenant Deleted Successfully.', 'success')
           await this.fetchAllTenants('?page=1')

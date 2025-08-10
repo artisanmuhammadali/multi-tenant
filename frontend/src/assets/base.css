@@ -44,6 +44,9 @@
 .guest-bg{
     background-image: url('../../public/assets/img/bg.jpeg');
 }
+.profile-bg{
+    background-image: url('../../public/assets/img/profile-bg.jpeg');
+}
 .d-inline-table{
     display: inline-table;
 }
@@ -150,4 +153,27 @@ button:disabled:hover {
 }
 .planDescription li{
   padding-bottom:10px;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 500px;
+}
+.bg-light{
+  background-color: #f7f7f7 !important;
 }

@@ -38,6 +38,10 @@ export const permissions = [
   {
     id: 'subscription',
     role: ['tenant'],
+  },
+  {
+    id: 'customer',
+    role: ['tenant'],
   }
 ]
 export function formatDate(date, formatString) {

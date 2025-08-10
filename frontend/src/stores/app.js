@@ -7,6 +7,7 @@ export const useAppStore = defineStore('app', {
   state: () => {
     return {
       setting: ref({}),
+      settings: ref([]),
       dashboardStats: ref({}),
       errors:ref({}),
     }
@@ -29,9 +30,24 @@ export const useAppStore = defineStore('app', {
     async fetchSetting() {
       startLoader()
       await axios
-        .get(`setting`)
+        .get(`admin/setting`)
         .then(async (response) => {
           this.setting = response.data.data
+          endLoader()
+        })
+        .catch((error) => {
+          endLoader()
+          toastrMsg(error?.response?.data?.message ?? 'Server Error', 'error')
+        })
+    },
+    async fetchSettingByKey(key) {
+      startLoader()
+      await axios
+        .get(`admin/setting/get/${key}`)
+        .then(async (response) => {
+          const key = Object.keys(response.data)[0];
+          const value = response.data[key];          
+          this.settings[key] = value;
           endLoader()
         })
         .catch((error) => {
@@ -43,7 +59,7 @@ export const useAppStore = defineStore('app', {
         disableSubmitBtn()
         startLoader()
         await axios
-          .post('setting/store', {...this.setting})
+          .post('admin/setting/store', {...this.setting})
           .then(async (response) => {
             enableSubmitBtn()
             endLoader()
