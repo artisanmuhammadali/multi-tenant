@@ -47,9 +47,9 @@
           <div class="card-body text-lg-start text-center pt-0 d-flex flex-column">
             <div class="planDescription mb-auto" v-clean-html="item.description"
               :class="item.active ? 'text-white' : ''"></div>
-            <button href="javascript:;" class="btn btn-icon  d-lg-block mt-auto mb-0"
+            <button href="javascript:;" class="btn btn-icon d-lg-block mt-auto mb-0"
               :disabled="subscriptionBtnState()"
-              :class="item.active  ? 'bg-gradient-light':'bg-gradient-dark'"
+              :class="item.active  ? 'text-black bg-gradient-light':'text-white bg-gradient-dark'"
               v-on:click="selectPlan(item)"
               >
               {{ getSubscriptionButtonText(item) }}

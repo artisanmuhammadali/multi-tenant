@@ -158,3 +158,11 @@ export const froalaConfig = {
       }
   }
 }
+export function openMobileNav()
+{
+  document.body.classList.toggle('g-sidenav-pinned')
+}
+export function hideMobileNav()
+{
+  document.body.classList.remove('g-sidenav-pinned')
+}

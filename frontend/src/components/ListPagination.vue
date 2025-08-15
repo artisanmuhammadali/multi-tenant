@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-between align-items-center py-2 px-4" v-if="totalItems > 0">
+  <div class="d-flex justify-content-between align-items-center py-2 px-4 w-max-content" v-if="totalItems > 0">
     <ListLimit @change="limitChange" />
     <!-- Pagination -->
     <nav class="pagination d-flex gap-3 align-items-center">

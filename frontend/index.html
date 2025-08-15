@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="%VITE_APP_URL%assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/src/assets/logo.svg">
     <title>
         Multi Tenant Dashboard
     </title>
@@ -13,23 +13,23 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
     <!-- Nucleo Icons -->
-    <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="%VITE_APP_URL%assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="%VITE_APP_URL%assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Material Icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
+    <link id="pagestyle" href="%VITE_APP_URL%assets/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
 </head>
 
 <body>
     <div id="app" class="mx-auto"></div>
     <script type="module" src="/src/main.js"></script>
     <!--   Core JS Files   -->
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/core/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="%VITE_APP_URL%assets/js/core/popper.min.js"></script>
+    <script src="%VITE_APP_URL%assets/js/core/bootstrap.min.js"></script>
+    <script src="%VITE_APP_URL%assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="%VITE_APP_URL%assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -40,7 +40,7 @@
         }
 
     </script>
-    <script src="assets/js/material-dashboard.min.js?v=3.2.0"></script>
+    <script src="%VITE_APP_URL%assets/js/material-dashboard.min.js?v=3.2.0"></script>
     <script>
         document.querySelector('[data-f-id="pbf"]')?.remove();
     </script>

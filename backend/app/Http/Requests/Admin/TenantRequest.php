@@ -23,7 +23,6 @@ class TenantRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'company_number' => 'required|string',
             'vat' => 'required',
             'email' => 'required|email',
             'phone_number' => 'required',

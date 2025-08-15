@@ -66,7 +66,7 @@ button:disabled:hover {
     padding: 0.5rem 0.5rem !important;
 }
 .sidebar .router-link-active{
-    background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
+    background-image: linear-gradient(195deg, #0891b2 0%, #0891b2 100%);
     color: #fff !important;
 }
 .fr-wrapper div:first-child {
@@ -113,7 +113,7 @@ button:disabled:hover {
   justify-content: center;
   display: flex;
   align-items: center;
-  background: #8b5cf617;
+  background: #6c647e73;
   z-index: 999;
 }
 .triangle1 {
@@ -121,7 +121,7 @@ button:disabled:hover {
   height: 0;
   border-style: solid;
   border-width: 50px 50px 0 0;
-  border-color: #191919  transparent transparent transparent;
+  border-color: #0891b2  transparent transparent transparent;
   margin: 0 auto;
   animation: shk1 1s ease-in-out infinite normal;
 }
@@ -131,7 +131,7 @@ button:disabled:hover {
   height: 0;
   border-style: solid;
   border-width: 0 0 50px 50px;
-  border-color: transparent transparent #42424a  transparent;
+  border-color: transparent transparent #0891b2  transparent;
   margin: -50px auto 0;
   animation: shk2 1s ease-in-out infinite alternate;
 }
@@ -176,4 +176,12 @@ button:disabled:hover {
 }
 .bg-light{
   background-color: #f7f7f7 !important;
+}
+@media only screen and (max-width: 426px) {
+  .w-max-content{
+    width: max-content;
+  }
+}
+.bg-gradient-dark{
+  background-image: linear-gradient(195deg, #0891b2 0%, #0891b2 100%);
 }

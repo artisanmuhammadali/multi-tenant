@@ -7,6 +7,7 @@ export const useAppStore = defineStore('app', {
   state: () => {
     return {
       setting: ref({}),
+      navBar: false,
       settings: ref([]),
       dashboardStats: ref({}),
       errors:ref({}),
@@ -43,7 +44,7 @@ export const useAppStore = defineStore('app', {
     async fetchSettingByKey(key) {
       startLoader()
       await axios
-        .get(`admin/setting/get/${key}`)
+        .get(`setting/get/${key}`)
         .then(async (response) => {
           const key = Object.keys(response.data)[0];
           const value = response.data[key];          

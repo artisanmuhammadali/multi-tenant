@@ -21,7 +21,7 @@
                     <form @submit.prevent="method">
                       <div class="multisteps-form__panel border-radius-xl bg-white js-active" data-animation="FadeIn">
                         <div class="row mt-3">
-                            <div class="col-12 col-sm-6 mb-3">
+                            <div class="col-12 col-sm-12 mb-3">
                               <div class="form-group">
                                 <label class="form-label">Company Name <span class="text-danger">*</span></label>
                                 <input class="form-control" v-model="tenantStore.tenant.name" type="text" required>
@@ -29,16 +29,6 @@
                               </div>
                               <span v-if="tenantStore.errors.name" class="text-danger text-xs">{{
                                   tenantStore.errors.name
-                                }}</span>
-                            </div>
-                            <div class="col-12 col-sm-6 mb-3">
-                              <div class="form-group">
-                                <label class="form-label">Company Number <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" v-model="tenantStore.tenant.company_number" required>
-
-                              </div>
-                              <span v-if="tenantStore.errors.company_number" class="text-danger text-xs">{{
-                                  tenantStore.errors.company_number
                                 }}</span>
                             </div>
                             <div class="col-12 col-sm-6 mb-3">
@@ -82,13 +72,22 @@
                                   tenantStore.errors.is_active
                                 }}</span>
                             </div>
-                            <div class="col-12 col-sm-12 mb-3">
+                            <div class="col-12 col-sm-6 mb-3">
                               <div class="form-group">
-                                <label class="form-label">Street Address <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" v-model="tenantStore.tenant.street_address" required>
+                                <label class="form-label">Street<span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" v-model="tenantStore.tenant.street_no" required>
                               </div>
-                              <span v-if="tenantStore.errors.street_address" class="text-danger text-xs">{{
-                                  tenantStore.errors.street_address
+                              <span v-if="tenantStore.errors.street_no" class="text-danger text-xs">{{
+                                  tenantStore.errors.street_no
+                                }}</span>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-3">
+                              <div class="form-group">
+                                <label class="form-label">House Number<span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" v-model="tenantStore.tenant.house_no" required>
+                              </div>
+                              <span v-if="tenantStore.errors.house_no" class="text-danger text-xs">{{
+                                  tenantStore.errors.house_no
                                 }}</span>
                             </div>
                             <div class="col-12 col-sm-3 mb-3">

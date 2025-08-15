@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->group(function(){
     });
     Route::get('/dashboard-stats', [DashboardController::class, 'index'])->name('dashboard.stats');
     Route::get('plan/', [PlanController::class, 'index'])->name('index');
+    Route::get('setting/get/{key}', [SettingController::class, 'key'])->name('key');
     Route::group(['prefix' => 'subscription' , 'as' => 'subscription.'], function () {
         Route::get('/', [SubscriptionController::class, 'index'])->name('index');
         Route::post('/update', [SubscriptionController::class, 'update'])->name('update');

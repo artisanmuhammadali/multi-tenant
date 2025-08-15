@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
             $table->string('vat');
-            $table->string('company_number');
             $table->string('phone_number');
             $table->boolean('is_active')->default(true);
             $table->bigInteger('user_id');

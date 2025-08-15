@@ -1,5 +1,5 @@
 import { getStores } from '@/stores'
-import { canAccess, getAuthToken } from '@/assets/utils'
+import { canAccess, getAuthToken, hideMobileNav } from '@/assets/utils'
 /**
  * This middleware is used to dynamically update the Layouts system.
  *
@@ -8,6 +8,7 @@ import { canAccess, getAuthToken } from '@/assets/utils'
  * If the layout we want to display is not found, loads the default layout App Layout Default.vue
  * */
 export async function authMiddleware(to, from, next) {
+  hideMobileNav()
   const { authStore } = getStores()
   // Fetch user only once if not already fetched
   if (!authStore.user && getAuthToken()) {

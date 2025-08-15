@@ -107,14 +107,14 @@ export const useTenantStore = defineStore('tenant', {
     // Helper Functions
     validation() {
       this.errors = {}
-      const validate = !!this.tenant.name && !!this.tenant.company_number && !!this.tenant.vat && !!this.tenant.email && !!this.tenant.phone_number  && !!this.tenant.street_address && !!this.tenant.postal_code && !!this.tenant.city && !!this.tenant.country
+      const validate = !!this.tenant.name && !!this.tenant.vat && !!this.tenant.email && !!this.tenant.phone_number  && !!this.tenant.street_no && !!this.tenant.postal_code && !!this.tenant.city && !!this.tenant.country && !!this.tenant.house_no
       if (!validate) {
         if (!this.tenant.name) this.errors.name = 'Company Name is required.'
-        if (!this.tenant.company_number) this.errors.company_number = 'Company Number is required.'
         if (!this.tenant.vat) this.errors.vat = 'VAT is required.'
         if (!this.tenant.email) this.errors.email = 'Email is required.'
         if (!this.tenant.phone_number) this.errors.phone_number = 'Company Phone Number is required.'
-        if (!this.tenant.street_address) this.errors.street_address = 'Street Address is required.'
+        if (!this.tenant.street_no) this.errors.street_no = 'Street Address is required.'
+        if (!this.tenant.house_no) this.errors.house_no = 'House no is required.'
         if (!this.tenant.postal_code) this.errors.postal_code = 'Postal Code is required.'
         if (!this.tenant.city) this.errors.city = 'City is required.'
         if (!this.tenant.country) this.errors.country = 'Country is required.'

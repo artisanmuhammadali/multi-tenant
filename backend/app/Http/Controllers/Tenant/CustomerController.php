@@ -43,7 +43,7 @@ class CustomerController extends Controller
             'first_name' => $customer->first_name,
             'last_name' => $customer->last_name,
             'phone_number' => $customer->phone_number,
-            'note' => $customer->note,
+            'note' => $customer->note ?? null,
             'user_id' => $user->id,
             'tenant_id' => $request->user()->id,
         ]);
@@ -89,7 +89,7 @@ class CustomerController extends Controller
             'first_name' => $customer->first_name,
             'last_name' => $customer->last_name,
             'phone_number' => $customer->phone_number,
-            'note' => $customer->note,
+            'note' => $customer->note ?? null,
         ]);
         foreach($request->addresses as $address)
         {

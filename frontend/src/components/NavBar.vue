@@ -12,11 +12,23 @@
           <li class="nav-item d-flex align-items-center">
             <a href="#" class="nav-link text-body font-weight-bold px-0 d-flex">
               <i class="material-symbols-rounded">account_circle</i>
-              {{ $auth.user?.name }}
+              <span class="d-md-block d-none">{{ $auth.user?.name }}</span>
             </a>
           </li>
+          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link p-0 text-body" v-on:click="openMobileNav()">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
+<script setup>
+import { openMobileNav } from '@/assets/utils';
+</script>

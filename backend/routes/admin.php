@@ -32,7 +32,6 @@ Route::group(['prefix' => 'admin' , 'middleware' => Admin::class], function () {
     });
     Route::group(['prefix' => 'setting' , 'as' => 'setting.'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('index');
-        Route::get('/get/{key}', [SettingController::class, 'key'])->name('key');
         Route::post('/store', [SettingController::class, 'store'])->name('store');
     });
 });

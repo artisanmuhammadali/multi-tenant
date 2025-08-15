@@ -1,13 +1,13 @@
 <template>
   <div class="row px-2 px-md-4">
       <div class="page-header min-height-300 border-radius-xl mt-4 profile-bg">
-        <span class="mask bg-gradient-dark opacity-6"></span>
+        <span class="mask opacity-6"></span>
       </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="/public/assets/img/logo-ct-dark.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm p-3">
+              <img src="/assets/img/logo-ct-dark.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm p-3">
             </div>
           </div>
           <div class="col-auto my-auto">

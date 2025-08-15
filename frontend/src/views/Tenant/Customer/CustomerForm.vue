@@ -86,10 +86,16 @@
                 </div>
 
               </div>
-              <div class="col-12 col-sm-12 mb-3">
+              <div class="col-12 col-sm-6 mb-3">
                 <div class="form-group">
-                  <label class="form-label">Street Address <span class="text-danger">*</span></label>
-                  <input class="form-control" v-model="address.street_address" type="text" required>
+                  <label class="form-label">Street No <span class="text-danger">*</span></label>
+                  <input class="form-control" v-model="address.street_no" type="text" required>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 mb-3">
+                <div class="form-group">
+                  <label class="form-label">House No <span class="text-danger">*</span></label>
+                  <input class="form-control" v-model="address.house_no" type="text" required>
                 </div>
               </div>
               <div class="col-12 col-sm-4 mb-3">
@@ -168,7 +174,8 @@ onUnmounted(async () => {
 })
 const addContact = () => {
   customerStore.addresses.push({
-    street_address: '',
+    street_no: '',
+    house_no: '',
     postal_code: '',
     city: '',
     type: 'home',

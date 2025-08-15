@@ -26,7 +26,7 @@ export const usePlanStore = defineStore('plan', {
     async fetchAllPlans(param) {
       startLoader()
       await axios
-        .get(`admin/plan${param}`)
+        .get(`/plan${param}`)
         .then(async (response) => {
           this.data = response.data.data
           this.totalPages = response.data.meta.last_page
